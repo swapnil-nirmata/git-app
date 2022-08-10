@@ -1,0 +1,40 @@
+apiVersion: "networking.k8s.io/v1beta1"
+kind: "Ingress"
+metadata:
+  annotations: {}
+  name: "ocp-adms-oce-web"
+  labels:
+    app.kubernetes.io/name: "ocp-adms-oce-web"
+spec:
+  ingressClassName: "cpx-appc-dlbcorp-ee1dhda-ic"
+  backend:
+    serviceName: "ocp-adms-oce-web"
+    servicePort: 8080
+  rules:
+  - host: "oce-adms-base.appc-dlbcorp-ee1dhda.duke-energy.com"
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: "ocp-adms-oce-web"
+          servicePort: 8080
+  pathType: regress
+  tls:
+  - hosts: []
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+data:
+  username: admin
+  password: pass
+kind: Secret
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: { ... }
+  creationTimestamp: 2020-01-22T18:41:56Z
+  name: mysecret
+  namespace: default
+  resourceVersion: "164619"
+  uid: cfee02d6-c137-11e5-8d73-42010af00002
+type: Opaque
