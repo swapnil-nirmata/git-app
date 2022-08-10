@@ -156,10 +156,10 @@ spec:
     spec:
       accessModes:
       - "ReadWriteOnce"
-      storageClassName: "best-effort-m3"
+      storageClassName: "fast"
       volumeMode: "Filesystem"
       resources:
         limits:
-          storage: "10Gi"
+          storage: "1Gi"
         requests:
-          storage: "10Gi"
+          storage: "1Gi"
